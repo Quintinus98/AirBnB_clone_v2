@@ -27,8 +27,12 @@ class State(BaseModel, Base):
             """ Returns the list of cities in the filestorage """
             from models import storage
             all_city = storage.all(City)
+            temp = []
             all_city_match = []
-            for city in all_city:
+            for key in all_city.keys():
+                if key.split('.')[0] == 'City':
+                    temp.append(all_city[key])
+            for city in temp:
                 if city.state_id == self.id:
                     all_city_match.append(city)
             return all_city_match
