@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ DataBase storage class """
 from sqlalchemy import create_engine
 from os import getenv
@@ -82,4 +83,4 @@ class DBStorage():
 
     def close(self):
         """Call remove() method"""
-        self.__session.remove()
+        self.__session.close()
