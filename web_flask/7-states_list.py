@@ -11,7 +11,8 @@ app.url_map.strict_slashes = False
 @app.teardown_appcontext
 def teardown(exception):
     """Remove the current SQLAlchemy session"""
-    storage.close()
+    if storage is not None:
+        storage.close()
 
 
 @app.route("/states_list")
